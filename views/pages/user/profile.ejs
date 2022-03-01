@@ -1,0 +1,141 @@
+<% if (message.length > 0) { %>
+  <% if (typeof message != 'undefined') { %>
+    <div class="alert alert-success" role="alert">
+      <div class="container">
+        <%= message %>
+      </div>
+    </div>
+  <% } %>
+<% } %>
+
+
+<div class="container mt-0 p-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-3 mx-auto">
+      <div class="card border-0 shadow-sm rounded-3 bg-white">
+        <div class="card-body">
+        
+          <div class="nav nav-tabs flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="btn btn-sm py-2 mb-3 btn-outline-secondary active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">
+              Profil
+            </button>
+            <button class="btn btn-sm py-2 btn-outline-secondary id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false">
+              Statystyki
+            </button>
+          </div>
+
+        </div> <!-- card-body -->
+      </div> <!-- card -->
+    </div>
+    <div class="col-sm-12 col-md-10 col-lg-9 mx-auto">
+      <div class="card border-0 shadow-sm rounded-3 bg-white">
+        <div class="card-body p-4">
+        
+          <div class="tab-content" id="v-pills-tabContent">
+            
+            <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+              <div class="d-flex flex-row align-items-center justify-content-between">
+                <h1 class="p-4">Profil</h1>
+                <% if (user) { %>
+                  <a href="/profil/ustawienia" class="btn btn-sm btn-secondary">Edytuj profil</a>
+                  <% } %>
+              </div>
+              
+              <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                      <img class="rounded-circle" width="150px" src="/img/user.png">
+                      <span class="fw-bold"><%= user.firstname %> <%= user.lastname %></span>
+                      <span class="text-muted"><%= user.email %></span>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-lg-row">
+                  <div class="card-footer w-100 text-center py-lg-4"><span class="text-muted">Ilość słówek: </span><%= user.wordlist.length %></div>
+                  <div class="card-footer w-100 text-center py-lg-4"><span class="text-muted">Ilość lekcji: </span>0</div>
+                  <div class="card-footer w-100 text-center py-lg-4"><span class="text-muted">Ilość punktów: </span> <%= user.score %></div>
+                </div>
+                <div class="card-body border-top py-4">
+                  <p>
+                    <span class="text-muted">Uczysz się języka: </span>
+                    <% if (user.language == 'en') { %>
+                      angielskiego
+                    <% } else if (user.language != 'en') { %>
+                      nie wybrano
+                    <% } %>
+                  </p>
+                  <p>
+                    <span class="text-muted">Na LingvoLernado od: </span><%= user.dateString %>
+                  </p>
+                  <p class="mb-0">
+                    <span class="text-muted">Ostatnie logowanie: </span><%= user.lastLogin %>
+                  </p>
+                </div>
+              </div>
+
+                
+            </div>
+
+            <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+              <h1 class="p-4">Statystyki</h1>
+              <canvas class="my-4 w-100" id="myChart" style="display: block; width: 800px; height: 337px;" width="800" height="337"></canvas>
+            </div>
+            
+
+          </div>
+ 
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+  'use strict'
+
+  // Graphs
+  var ctx = document.getElementById('myChart')
+  // eslint-disable-next-line no-unused-vars
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [
+        'Poniedziałek',
+        'Wtorek',
+        'Środa',
+        'Czwartek',
+        'Piątek',
+        'Sobota',
+        'Niedziela'
+      ],
+      datasets: [{
+        data: [
+          3,
+          5,
+          3,
+          3,
+          9,
+          2,
+          4
+        ],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#007bff',
+        borderWidth: 4,
+        pointBackgroundColor: '#007bff'
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: false
+          }
+        }]
+      },
+      legend: {
+        display: false
+      }
+    }
+  })
+})()
+</script>

@@ -1,0 +1,48 @@
+{
+    "_id" : ObjectId("621d3077eade702302e1662d"),
+    "date" : ISODate("2022-02-28T19:57:16.000Z"),
+    "dateString" : "28 lutego 2022",
+    "lastLogin" : "28 lutego 2022",
+    "email" : "albert@mail.com",
+    "password" : "$2b$10$ijRwIQgrl25.0UHeJ9fpnu3OLxWqDjnQoNtaj0I4E6/hN8QQzKr/6",
+    "score" : 0,
+    "language" : "en",
+    "languages" : "en",
+    "activated" : true,
+    "wordlist" : [ 
+        {
+            "name" : "Black",
+            "name_pl" : "czarny",
+            "name_en" : "black",
+            "_id" : ObjectId("61c2756527650295a3939328")
+        }, 
+        {
+            "name" : "Red",
+            "name_pl" : "czerwony",
+            "name_en" : "red",
+            "_id" : ObjectId("61c2758627650295a393932e")
+        }, 
+        {
+            "name" : "Green",
+            "name_pl" : "zielony",
+            "name_en" : "green",
+            "_id" : ObjectId("61c2758f27650295a3939336")
+        }, 
+        {
+            "name" : "Blue",
+            "name_pl" : "niebieski",
+            "name_en" : "blue",
+            "_id" : ObjectId("61c275a527650295a3939344")
+        }, 
+        {
+            "name" : "Blck",
+            "name_pl" : "czarny",
+            "name_en" : "black",
+            "_id" : ObjectId("621d41abeade702302e166f1")
+        }
+    ],
+    "favorite" : [],
+    "difficult" : [],
+    "__v" : 3,
+    "firstname" : "Albert"
+}

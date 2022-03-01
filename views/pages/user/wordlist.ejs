@@ -1,0 +1,224 @@
+<% if (message.length > 0) { %>
+  <% if (typeof message != 'undefined') { %>
+    <div class="alert alert-success" role="alert">
+      <div class="container">
+        <%= message %>
+      </div>
+    </div>
+  <% } %>
+<% } %>
+
+<% if (errors) { %>
+  <!-- <div class="alert alert-danger">Błędny email lub hasło!</div> -->
+  <div class="alert alert-danger">
+    <div class=" container">
+      <%= errors %>
+    </div>
+  </div>
+<% } %>
+
+
+<div class="container mt-0 p-lg-5 py-5">
+  <!-- <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#" class="text-muted">Strona główna</a></li>
+      <li class="breadcrumb-item"><a href="#" class="text-muted">Profil</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Moje słówka</li>
+    </ol>
+  </nav> -->
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-12 mx-auto">
+      <div class="card border-0 shadow-sm rounded-3 bg-white">
+        <div class="card-body p-4">
+
+          <div class="d-flex flex-lg-row flex-column justify-content-between align-items-center">
+            <!-- <h1 class="h1">Moje słówka <small class="text-muted">(<%= count_words %>)</small></h1> -->
+            <h1 class="d-flex align-items-center">Moje słówka <span class="text-muted ms-1 fs-3">(<%= count_words %>)</span></h1>
+            <div class="d-flex flex-lg-row justify-content-between align-items-center">
+              <!-- Button trigger modal -->
+              <a href="/profil/slowka/wybor" type="button" class="btn btn-secondary me-4">
+                Powtarzaj słówka
+              </a>
+              <!-- <a href="" type="button" class="btn btn-secondary me-4" data-bs-toggle="modal" data-bs-target="#modalChoice">
+                Fiszki
+              </a> -->
+              <!-- <form method="post" action="/profil/slowka/wyczysc">
+                <button type="submit" class="btn btn-secondary me-4" onclick="return confirm('Czy na pewno wyczyścić tablicę słówek?')">
+                  Wyczyść słówka
+                </button>
+              </form> -->
+              <a href="" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Dodaj nowe słówko
+              </a>
+            </div>
+          </div>
+          <p class="lead my-4 text-muted">Znajdują się tutaj wszystkie słówka, dodane przez Ciebie za pomocą formularza dodawania słówka. </p>
+
+          <!-- Modal fiszki -->
+          <!-- <div class="modal modal-alert position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalChoice" aria-hidden="true"> -->
+          <div class="modal fade modal-alert" id="modalChoice" tabindex="-1" aria-labelledby="modalChoice" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content rounded-4 shadow">
+                <div class="modal-body p-4 text-center">
+                  <h5 class="mb-0">Tytuł fiszki</h5>
+                  <p class="mb-0">To jest sobie tekst fiszki...</p>
+                </div>
+                <div class="modal-footer flex-nowrap p-0">
+                  <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">Zamknij</button>
+                  <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right"><strong>Następne</strong></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal addWord-->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Dodaj słówko</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST">
+                  <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="addName" class="form-label">Nazwa:</label>
+                        <input type="text" class="form-control" id="name" name="addName">
+                      </div>
+                      <div class="mb-3">
+                        <label for="addEn" class="form-label">Po angielsku:</label>
+                        <input type="text" class="form-control" id="addEn" name="addEn">
+                      </div>
+                      <div class="mb-3">
+                        <label for="addPl" class="form-label">Po polsku:</label>
+                        <input type="text" class="form-control" id="addPl" name="addPl">
+                      </div>
+
+                      <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Zamknij</button>
+                    <button type="submit" class="btn btn-secondary">Zapisz</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex flex-lg-row flex-column justify-content-between align-items-center">
+            
+            <!-- <div class="mt-3 mb-5 d-flex">
+              <input type="text" name="q" class="form-control" value="<%- query.q %>" placeholder="Szukaj...">
+              <button type="submit" class="btn btn-primary ms-2 px-5 fw-bold">Szukaj</button>
+            </div>
+            
+            <% if (query.q) { %>
+              <p class="lead fw-normal mb-4">Wyniki wyszukiwania dla frazy "<b><%- query.q %></b>"</p>
+              <% } %> -->
+            <div class="d-flex flex-lg-row flex-column justify-content-between align-items-center w-md-25 w-lg-25">
+              <select class="form-select form-select d-inline-block me-lg-4 my-3 my-lg-0" aria-label=".form-select example">
+                <option selected>Wszystkie słowa (<%= count_words %>)</option>
+                <option value="1">Nauczone</option>
+                <option value="2">Do powtórki</option>
+                <option value="3">Trudne</option>
+              </select>
+            </div>
+            <form method="GET" action="/profil/slowka" class="col-lg-auto mb-3 mb-lg-0 w-md-75 w-lg-75 d-flex flex-lg-row flex-column">
+                <input type="search" class="form-control w-md-75 w-lg-75" placeholder="Szukaj angielskiego słówka..." name="q" value="<%- query.q %>" aria-label="Search">
+                <button type="submit" class="btn btn-secondary w-md-25 w-lg-25 ms-2 px-5 fw-bold">Szukaj</button>
+            </form>
+          </div>
+
+          <div class="py-4 mt-4">
+
+            
+
+            <table class="table table-striped align-middle m-0 border">
+              <thead class="text-muted">
+                <tr>
+                  <th scope="col">#</th>
+                  <!-- <th scope="col">ID</th> -->
+                  <!-- <th scope="col">Odtwórz</th> -->
+                  <th scope="col">Po angielsku</th>
+                  <th scope="col">Po polsku</th>
+                  <th scope="col">Opcje</th>
+                </tr>
+              </thead>
+              <tbody style="line-height: 2rem;">
+                  <% words.forEach(function (word, i) { %>
+                      <tr>
+                          <th scope="row"><%= i+1 %></th>
+                          <!-- <td><%= word.name %></td> -->
+                          <td>
+                            <div class="d-flex flex-row align-items-center">
+                              <button class="btn btn-link p-0 me-2 d-flex align-items-center" id="toSpeech" onclick="textToSpeech('<%-word.name_en%>', 'en')" title="Odtwórz dźwięk">
+                                <i class="bi bi-play-circle-fill"></i>
+                              </button>
+                              <%= word.name_en %>
+                            </div>
+                          </td>
+                          <td><%= word.name_pl %></td>
+                          <td>
+                            <a href="" class="link-secondary text-decoration-none" data-bs-toggle="modal" data-bs-target="#editWord<%= word._id %>" title="Edytuj słówko">
+                              <i class="bi bi-pencil-square me-2"></i>
+                            </a>
+                            <a class="link-secondary text-decoration-none" href="/profil/slowka/<%= word._id %>/usun" onclick="return confirm('Czy na pewno usunąć to słówko?')" title="Usuń słówko">
+                              <i class="bi bi-trash-fill"></i>
+                            </a>
+                          </td>
+                      </tr>
+
+                      <!-- Modal editWord-->
+                      <div class="modal fade" id="editWord<%= word._id %>" tabindex="-1" aria-labelledby="editWordLabel<%= word._id %>" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editWordLabel<%= word._id %>">Edytuj słówko</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form method="POST" action="/profil/slowka/<%= word._id %>/edytuj">
+                              <div class="modal-body">
+                                  <div class="mb-3">
+                                    <label for="editName" class="form-label">Nazwa:</label>
+                                    <input type="text" class="form-control" name="editName" value="<%= word.name %>">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="editEn" class="form-label">Po angielsku:</label>
+                                    <input type="text" class="form-control" name="editEn" value="<%= word.name_en %>">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="editPl" class="form-label">Po polsku:</label>
+                                    <input type="text" class="form-control" name="editPl" value="<%= word.name_pl %>">
+                                  </div>
+
+                                  <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Zamknij</button>
+                                <button type="submit" class="btn btn-secondary">Zapisz</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                    <% }); %>
+              </tbody>
+            </table>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function textToSpeech(textSpeech, language) {
+    let Speech = new SpeechSynthesisUtterance(textSpeech);
+    Speech.lang = language;
+    speechSynthesis.speak(Speech);
+  }
+</script>

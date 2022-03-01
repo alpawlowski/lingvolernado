@@ -1,0 +1,54 @@
+<% if (errors) { %>
+  <!-- <div class="alert alert-danger">Błędny email lub hasło!</div> -->
+  <div class="alert alert-danger">
+    <div class=" container">
+      <%= errors %>
+    </div>
+  </div>
+<% } %>
+
+<% if(success_msg != ''){ %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class=" container">
+      <%= success_msg %>
+    </div>
+  </div>
+<% } %>
+<div class="container mt-0 p-5">
+  <div class="row">
+    <div class="col-12 col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card border-0 shadow-sm rounded-3 bg-white">
+        <div class="card-body p-4 p-sm-5">
+          <h1 class="card-title text-center mb-5 fw-normal fs-3">Logowanie</h1>
+
+          <form method="POST">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control bg-light" name="email" id="email" value="<%= form.email %>" placeholder="Email" required>
+              <label for="email">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control bg-light" name="password" id="password" placeholder="Hasło" value="<%= form.password %>" required>
+              <label for="password">Hasło</label>
+            </div>
+
+            <!-- <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
+              <label class="form-check-label" for="rememberPasswordCheck">
+                Zapamiętaj hasło
+              </label>
+            </div> -->
+            <div class="d-grid my-3">
+                <button type="submit" class="btn btn-secondary btn-login text-uppercase fw-bold py-3">Zaloguj</button>
+            </div>
+            <hr class="my-4">
+            <a href="" class="text-center mx-auto d-block">Przypomnij hasło</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+</div> <!-- container -->
+
+

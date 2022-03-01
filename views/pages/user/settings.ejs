@@ -1,0 +1,124 @@
+<% if (message.length > 0) { %>
+  <% if (typeof message != 'undefined') { %>
+    <div class="alert alert-success" role="alert">
+      <div class="container">
+        <%= message %>
+      </div>
+    </div>
+  <% } %>
+<% } %>
+<div class="container mt-0 p-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-3 mx-auto">
+      <div class="card border-0 shadow-sm rounded-3 bg-white">
+        <div class="card-body">
+        
+          <div class="nav nav-tabs flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="btn btn-sm py-2 mb-3 btn-outline-secondary active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">Ustawienia profilu</button>
+            <button class="btn btn-sm py-2 btn-outline-secondary id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false">Ustawienia konta</button>
+          </div>
+
+        </div> <!-- card-body -->
+      </div> <!-- card -->
+    </div>
+    <div class="col-sm-12 col-md-10 col-lg-9 mx-auto">
+      <div class="card border-0 shadow-sm rounded-3 bg-white">
+        <div class="card-body p-4">
+        
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+              <h1 class="p-4">Ustawienia profilu</h1>
+              <div class="p-4 my-4">
+
+                <form method="POST" action="/profil/ustawienia">
+                  
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" 
+                      name="email"
+                      id="email"
+                      value="<%= user.email %>" 
+                      class="form-control <%- errors?.email ? 'is-invalid' : '' %>" required>
+                    <% if (errors?.email) { %>
+                      <div class="invalid-feedback"><%= errors['email'].properties.message %></div>
+                    <% } %>
+                  </div>
+    
+                  <div class="mb-3">
+                    <label for="firstname" class="form-label">Imię</label>
+                    <input type="text" 
+                      name="firstname"
+                      id="firstname"
+                      value="<%= form.firstname %>" 
+                      class="form-control <%- errors?.firstname ? 'is-invalid' : '' %>">
+                    <% if (errors?.firstname) { %>
+                      <div class="invalid-feedback"><%= errors['firstname'].properties.message %></div>
+                    <% } %>
+                  </div>
+                  <div class="mb-3">
+                    <label for="lastname" class="form-label">Nazwisko</label>
+                    <input type="text" 
+                      name="lastname"
+                      id="lastname"
+                      value="<%= form.lastname %>" 
+                      class="form-control <%- errors?.lastname ? 'is-invalid' : '' %>">
+                    <% if (errors?.lastname) { %>
+                      <div class="invalid-feedback"><%= errors['lastname'].properties.message %></div>
+                    <% } %>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="lastname" class="form-label">Język nauki</label>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>Open this select menu</option>
+                      <option value="en">Angielski</option>
+                    </select>
+                  </div>
+    
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Hasło</label>
+                    <input type="password" 
+                      name="password"
+                      id="password"
+                      class="form-control <%- errors?.password ? 'is-invalid' : '' %>">
+                    <% if (errors?.password) { %>
+                      <div class="invalid-feedback"><%= errors['password'].properties.message %></div>
+                    <% } %>
+    
+                  </div>
+                  <button type="submit" class="btn btn-secondary" id="liveToastBtn">Zapisz</button>
+                </form>
+    
+              </div>
+            </div>
+            <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+              <h1 class="p-4">Ustawienia konta</h1>
+
+              <div class="card border-secondary my-4">
+                <div class="card-body text-secondary">
+                  <form method="post" action="/profil/slowka/wyczysc">
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Czy na pewno chcesz wyczyścić tablicę słówek?')">
+                      <p class="card-title my-0">Wyczyść tablicę słówek</p>
+                    </button>
+                    <p class="card-text mt-3">Uwaga! Spowoduje to wyczyszczenie całej tablicy słówek użytkownika.</p>
+                  </form>
+                </div>
+              </div>
+              <div class="card border-secondary my-4">
+                <div class="card-body text-secondary">
+                  <form method="post" action="/profil/usun-konto/<%= user._id %>">
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć konto?')">
+                      <p class="card-title my-0">Usuń konto</p>
+                    </button>
+                    <p class="card-text mt-3">Uwaga! Usuwając konto stracisz wszystkie swoje słówka oraz dostęp do platformy.</p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+      </div>
+    </div>
+  </div>
+</div>
+

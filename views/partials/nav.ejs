@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="/img/lingvolernado.png" height="30px">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNav">
+        <ul class="navbar-nav fw-bold">
+          <li class="nav-item ms-3">
+            <a class="nav-link <%- url === '/' ? 'active' : '' %>" href="/">Strona główna</a>
+          </li>
+          <% if (user) { %>
+          <li class="nav-item ms-3">
+            <a class="nav-link <%- url.includes('/lekcje') ? 'active' : '' %>" href="/lekcje">Lekcje tematyczne</a>
+          </li>
+          <% } %>
+        </ul>
+        <ul class="navbar-nav fw-bold ms-auto">
+          <% if (!user) { %>
+            <li class="nav-item me-2">
+              <a type="button" class="btn btn-secondary py-2 px-4 fw-bold <%- url.includes('/zarejestruj') ? 'active' : '' %>" href="/zarejestruj">Rejestracja</a>
+            </li>
+            <li class="nav-item">
+              <a type="button" class="btn btn-outline-secondary py-2 px-4 fw-bold <%- url.includes('/zaloguj') ? 'active' : '' %>" href="/zaloguj">Logowanie</a>
+            </li>
+  
+          <% } else { %>
+            <!-- <li class="nav-item me-3">
+              <a class="nav-link <%- url.includes('/profil/wybor') ? 'active' : '' %>" href="/profil/wybor">Wybór</a>
+            </li> -->
+            <li class="nav-item me-3">
+              <a type="button" class="nav-link py-2 px-4 fw-bold <%- url.includes('/zaloguj') ? 'active' : '' %>" href="/profil/slowka">
+                Moje słówka
+              </a>
+            </li>
+  
+            <li class="nav-item dropdown" >
+              <a type="button" class="btn btn-outline-link border py-2 px-4 fw-bold dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Witaj, 
+                <% if (typeof user.firstname != 'undefined') { %>
+                  <%= user.firstname %>
+                <% } else { %>
+                  Profil
+                <% } %>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item <%- url.includes('profil/slowka') ? 'active' : '' %>" href="/profil/slowka">Moje słówka</a></li>
+                <li>
+                  <a class="dropdown-item <%- url.includes('/profil/kokpit') ? 'active' : '' %>" href="/profil/kokpit">Profil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item <%- url.includes('/profil/ustawienia') ? 'active' : '' %>" href="/profil/ustawienia">Ustawienia</a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/wyloguj">Wyloguj</a></li>
+              </ul>
+            </li>
+  
+          <% } %>
+  
+        </ul>
+      </div>
+    </div>
+  </nav>

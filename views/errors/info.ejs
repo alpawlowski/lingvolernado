@@ -1,0 +1,24 @@
+<style>
+    body{
+      background-color: #E2EAEB;
+    }
+  </style>
+  
+  <div class="container">
+    <div class="h-100vh d-flex flex-column align-items-center justify-content-center">
+        
+      <img src="/img/logo.png" class="img-fluid">
+      
+      <% if(msg != ''){ %>
+        <h2 style="color: #43B649;" class="h2 lead fw-bold">
+          <%= msg %>
+        </h2>
+      <% } %>
+
+      <p class="lead">Możesz się zalogować klikając w poniższy przycisk. </p>
+      <a href="/zaloguj" type="button" class="btn btn-lg btn-outline-success px-4 fw-bold">
+        Zaloguj się do swojego konta
+      </a>
+    </div>
+  
+  </div>

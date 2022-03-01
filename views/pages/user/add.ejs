@@ -1,0 +1,64 @@
+<h1>Mój profil</h1>
+
+
+<div class="py-4 mt-4">
+
+  <% if (message.length > 0) { %>
+    <% if (typeof message != 'undefined') { %>
+      <div class="alert alert-success" role="alert">
+        <%= message %>
+      </div>
+    <% } %>
+  <% } %>
+
+  <form method="POST">
+    
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" 
+        name="email"
+        id="email"
+        value="<%= user.email %>" 
+        class="form-control <%- errors?.email ? 'is-invalid' : '' %>" required>
+      <% if (errors?.email) { %>
+        <div class="invalid-feedback"><%= errors['email'].properties.message %></div>
+      <% } %>
+    </div>
+
+    <div class="mb-3">
+      <label for="firstname" class="form-label">Imię</label>
+      <input type="text" 
+        name="firstname"
+        id="firstname"
+        value="<%= form.firstname %>" 
+        class="form-control <%- errors?.firstname ? 'is-invalid' : '' %>">
+      <% if (errors?.firstname) { %>
+        <div class="invalid-feedback"><%= errors['firstname'].properties.message %></div>
+      <% } %>
+    </div>
+    <div class="mb-3">
+      <label for="lastname" class="form-label">Nazwisko</label>
+      <input type="text" 
+        name="lastname"
+        id="lastname"
+        value="<%= form.lastname %>" 
+        class="form-control <%- errors?.lastname ? 'is-invalid' : '' %>">
+      <% if (errors?.lastname) { %>
+        <div class="invalid-feedback"><%= errors['lastname'].properties.message %></div>
+      <% } %>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Hasło</label>
+      <input type="password" 
+        name="password"
+        id="password"
+        class="form-control <%- errors?.password ? 'is-invalid' : '' %>">
+      <% if (errors?.password) { %>
+        <div class="invalid-feedback"><%= errors['password'].properties.message %></div>
+      <% } %>
+
+    </div>
+    <button type="submit" class="btn btn-primary" id="liveToastBtn">Zapisz</button>
+  </form>
+</div>

@@ -1,0 +1,83 @@
+<% if(success_msg != ''){ %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <div class="container">
+        <%= success_msg %>
+      </div>
+    </div>
+<% } %>
+
+<% if (errors) { %>
+  <div class="alert alert-danger">
+    <div class=" container">
+      Formularz zawiera błędy!
+    </div>
+  </div>
+<% } %>
+
+<div class="container mt-0 p-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-12 mx-auto">
+      <div class="card border-0 shadow-sm rounded-3 bg-white">
+        <div class="card-body p-4 p-sm-5 d-flex align-items-center">
+
+          <% if (user) { %>
+            <div class="d-flex flex-column">
+              <h1>Witaj <%= user.firstname %></h1>
+              <p>Twój email: <%- user.email %></p>
+              <p>Data dołączenia: <%- user.dateString %></p>
+            </div>
+          <% } else { %>
+            <div class="col-md-9">
+              <h1>Witaj w LingvoLernado!</h1>
+              <p>
+                <a class="btn btn-lg btn-outline-secondary px-4 mt-4" href="/zarejestruj">Załóż konto</a>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <img class="globe" src="/img/g12.png"> 
+            </div>
+          <% } %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- container -->
+
+
+<!-- <style>
+  
+  svg.fa-globe-americas {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-animation: earth-animation 4s infinite;
+    animation: earth-animation 4s infinite;
+  }
+
+  @keyframes earth-animation {
+    0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+}
+50% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+}
+  }
+  /* @keyframes earth-animation {
+    0%{
+      transform: rotateY(0deg);
+    }
+    100%{
+      transform: rotateY(360deg);
+    }
+  } */
+  
+</style> -->

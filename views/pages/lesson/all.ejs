@@ -1,0 +1,122 @@
+<div class="container mt-0 p-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-12 mx-auto">
+      <div class="card border-0 shadow-sm rounded-3 bg-white">
+        <div class="card-body p-4">
+
+          <form>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="mt-3 d-flex justify-content-between align-items-center w-50">
+                <h1 class="d-flex align-items-center">Lista lekcji <span class="text-muted ms-1 fs-3">(<%= resultsCount %>)</span></h1>
+              </div>
+              <div class="mt-3 d-flex align-items-center justify-content-end w-100">
+                <input type="text" name="q" class="form-control w-50" value="<%- query.q %>" placeholder="Szukaj lekcji...">
+                <button type="submit" class="btn btn-secondary ms-2 px-5 fw-bold">Szukaj</button>
+              </div>
+            </div>
+            
+            <hr>
+            
+            <div class="row mt-5">
+              <div class="col-3">
+
+                <label for="level" class="form-label">Poziom trudności:</label>
+                <select class="mb-4 form-select form-select-sm d-inline-block" name="level" id="level" aria-label=".form-select-sm example">
+                  <option value="" <%- query.level === '' ? 'selected' : '' %>>Wszystkie</option>
+                  <option value="1" <%- query.level === '1' ? 'selected' : '' %>>Poziom początkujący</option>
+                  <option value="2" <%- query.level === '2' ? 'selected' : '' %>>Poziom średniozaawansowany</option>
+                  <option value="3" <%- query.level === '3' ? 'selected' : '' %>>Poziom zaawansowany</option>
+                </select>
+
+                <!-- SORTOWANIE -->
+                <label for="sort" class="form-label">Sortuj według:</label>
+                <select class="form-select form-select-sm" name="sort" id="sort">
+                  <option value="">Domyślnie</option>
+                  <option value="name_asc" <%- query.sort === 'name_asc' ? 'selected' : '' %>>Nazwa A-Z</option>
+                  <option value="name_desc" <%- query.sort === 'name_desc' ? 'selected' : '' %>>Nazwa Z-A </option>
+                  <option value="level_asc" <%- query.sort === 'level_asc' ? 'selected' : '' %>>Poziom 1-3 </option>
+                  <option value="level_desc" <%- query.sort === 'level_desc' ? 'selected' : '' %>>Poziom 3-1 </option>
+                </select>
+                <button type="submit" class="btn btn-secondary w-100 mt-4">Zastosuj</button>   
+
+              </div>
+              <div class="col-9">
+                <% if (query.q) { %>
+                  <p class="lead fw-normal mt-3">Wyniki wyszukiwania dla <span class="text-muted">"<b><%- query.q %></b>"</span></p>
+                <% } %>
+                <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 mt-0 mb-5">
+                  <% lessons.forEach(function (lesson, i) { %>
+      
+                      <div class="col part mt-0">
+                        <a href="/lekcje/<%= lesson.slug %>" class="text-decoration-none">
+                          <div class="card card-cover h-100 overflow-hidden text-dark bg-white rounded-5 shadow-sm">
+                            <img src="/img/images/<%= lesson.img_url %>" class="card-img-top" alt="..." style="max-height: 155px;">
+                            <% if (lesson.level === 1) { %>
+                              <span class="position-absolute badge bg-success ms-2 mt-2">Poziom początkujący</span>
+                            <% } else if (lesson.level === 2) { %>
+                              <span class="position-absolute badge bg-warning ms-2 mt-2">Poziom średniozaawansowany</span>
+                            <% } else if (lesson.level === 3) { %>
+                              <span class="position-absolute badge bg-danger ms-2 mt-2">Poziom zaawansowany</span>
+                            <% } %>
+                            <div class="d-flex flex-column h-100 px-4 py-3 text-dark text-shadow-1 position-relative">
+      
+                              <h2 class="my-3 mb-4 h2 fw-bold"><%= lesson.name %></h2>
+                              <ul class="d-flex list-unstyled my-auto">
+                                <li class="me-auto">
+                                  <i class="bi bi-arrow-right-square" style="font-size: 20px;"></i>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                  <span class="badge px-3 py-2 bg-light text-dark"><%= lesson.wordlist.length %> słówek</span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+      
+                      <% }); %>
+                    </div>
+
+                <!-- PAGINACJA -->
+                <div class="row mt-5">
+                  <div class="col d-flex justify-content-between align-items-center mb-4">
+                    <p>Wyników <%- lessons.length %> na <%- resultsCount %></p>
+                    <nav>
+                      <ul class="pagination pagination-sm justify-content-end">
+                        <% for (let i = 1; i <= pagesCount; i++) { %>
+                          <li class="page-item <%- page == i ? 'active' : '' %>">
+                            <a class="page-link" href="#" data-page="<%- i %>">
+                              <%- i %>
+                            </a>
+                          </li>
+                        <% } %>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+                
+                <script>
+                  const changePage = (e) => {
+                    e.preventDefault();
+                    const search = new URLSearchParams(window.location.search);
+                    search.set('page', e.target.dataset.page);
+                    const url = window.location.origin + window.location.pathname + '?' + search.toString();
+                    window.location.href = url;
+                  }
+                  document.querySelectorAll('.pagination a').forEach(a => {
+                    a.addEventListener('click', changePage);
+                  });
+                </script>
+
+              </div>
+            </div>
+
+
+          </form>
+
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+</div>  

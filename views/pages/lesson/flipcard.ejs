@@ -1,0 +1,275 @@
+<style>
+
+    .contentFlex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .flipcard {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-width: 30vw;
+      max-width: 40vw;
+      min-height: 20vh;
+      aspect-ratio: 10 / 5; /* ↔️ is double the ↕️ */
+      perspective: 1000px;
+      box-shadow: 0;
+    }
+  
+    /* .flipcard:hover .flipcard__inner {
+      transform: rotateY(-180deg);
+    } */
+  
+    .flip{
+      transform: rotateY(-180deg);
+    }
+  
+    .flipcard__inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: all 0.8s ease;
+    }
+  
+    .flipcard__front,
+    .flipcard__back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      overflow: hidden;
+    }
+  
+    .flipcard__front {
+      z-index: 1;
+      flex-flow: column;
+    }
+  
+    .flipcard__back {
+      flex-flow: column;
+      transform: rotateY(-180deg);
+      z-index: 2;
+    }
+  
+    .flipcard p {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+  
+  </style>
+  
+  <div class="container mt-0 p-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-lg-12 mx-auto">
+        <div class="card border-0 shadow-sm rounded-3 bg-white">
+  
+        <% if (words.length > 0) { %>
+  
+          <script>
+              
+              let tabOfWords = <%- JSON.stringify(words.map(function(word, i) {
+                  return {iter: i, en: word.name_en, pl: word.name_pl};
+              })) %>;
+              console.log(tabOfWords);
+              // function loadWords(tabOfWords){
+              //     return tabOfWords;
+              // }
+              // let myFunc = loadWords(tabOfWords);
+              // let loadWords = tabOfWords;
+          </script>
+  
+          
+  
+          <div class="card-body p-4">
+            <% 
+              let iter = 0; 
+            
+            %>
+  
+              <% if (words[iter]) { %>
+          
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                  <a href="/lekcje/<%= lesson.slug %>" type="button" class="btn-close d-flex flex-row align-items-center py-3 pe-5 me-5 border"></a>
+                  <h1 class="h1 px-4"><%= lesson.name %></h1>
+                  <span class="lead">Metoda: <i class="bi bi-card-text mx-2"></i>Fiszki</span>
+                </div>
+                <hr>
+                <br>
+                
+              <div class="col-lg-12 p-3 p-lg-5 pt-lg-3 text-center">
+                  <p class="lead"><span id="current">1</span> / <%= words.length %></p>
+                <div class="progress mt-3 mb-5">
+                  <div class="progress-bar" id="progressbar" role="progressbar" aria-valuemin="0" aria-valuemax="100"><%= iter+1 %> </div>
+                </div>
+                <div class="row d-flex align-items-center justify-content-center w-100">
+                  <div class="flipcard">
+                    <div class="flipcard__inner shadow bg-light">
+                      <div class="flipcard__front bg-light">
+                        <small class="lead mb-2 text-muted">🇬🇧 angielski</small>
+                        <p class="lead fw-bold d-flex align-items-center">
+                          <i class="bi bi-volume-up me-2" style="font-size: 30px;" id="play_en"></i> 
+                          <span id="english"><%= words[iter].name_en %> </span> 
+                        </p>
+                      </div>
+                      <div class="flipcard__back bg-light">
+                        <small class="lead mb-2 text-muted">🇵🇱 polski</small>
+                        <p class="lead fw-bold d-flex align-items-center">
+                          <i class="bi bi-volume-up me-2" style="font-size: 30px;" id="play_pl"></i> 
+                          <span id="polish"><%= words[iter].name_pl %> </span> 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-center mt-5 mb-4 mb-lg-3">
+                  <button type="button" id="prev-btn" class="btn btn-outline-secondary btn-lg px-4"><i class="bi bi-arrow-left"></i></button>
+                  <button type="button" id="flip-btn" class="btn btn-outline-secondary btn-lg px-4"><i class="bi bi-arrow-repeat"></i> Odwróć</button>
+                  <button type="button" id="next-btn" class="btn btn-outline-secondary btn-lg px-4"><i class="bi bi-arrow-right"></i></button>
+                </div>
+  
+                <% }; %>
+  
+                
+          </div>
+        </div>
+  
+        <% } else { %>
+          <div class="card-body p-4">
+            <p class="lead my-5 text-center">
+              Nie masz wystarczającej liczby słówek, by móc rozpocząć to ćwiczenie
+            </p>
+          </div>
+        <% }; %>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  
+    const flipBtn = document.getElementById('flip-btn');
+    const flipcard = document.querySelector('.flipcard__inner');
+    
+    function flip() {
+      flipcard.classList.toggle("flip");  
+    };
+  
+    flipBtn.addEventListener('click', () => {
+      flip();
+  
+    });
+  
+    document.body.onkeydown = function(e){
+      if(e.keyCode == 32){
+        flip();
+      }
+    }
+  
+    function textToSpeech(textSpeech, language) {
+        let Speech = new SpeechSynthesisUtterance(textSpeech);
+        Speech.lang = language;
+        speechSynthesis.speak(Speech);
+        const wyraz = textSpeech;
+        console.log(wyraz);
+    }
+  
+    function nextWord(iter, all) {
+
+        if (iter != all) {
+            iter++;
+        } else {
+  
+        }
+  
+    }
+  
+    function setProgressBar() {
+  
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      
+      const playBtnEn = document.getElementById('play_en');
+      const playBtnPl = document.getElementById('play_pl');
+  
+      function hover(btn) {
+        btn.addEventListener('mouseover', () => {
+          btn.classList.add('bi-volume-up-fill');
+          btn.classList.remove('bi-volume-up');
+        })
+  
+        btn.addEventListener('mouseleave', () => {
+          btn.classList.add('bi-volume-up');
+          btn.classList.remove('bi-volume-up-fill');
+        })
+      };
+  
+      playBtnEn.addEventListener('click', () => {
+            textToSpeech(words[currentWord-1].en, 'en');
+      });
+      
+      playBtnPl.addEventListener('click', () => {
+            textToSpeech(words[currentWord-1].pl, 'pl');
+      });
+  
+  
+      const progressBar = document.getElementById('progressbar');
+      const currentText = document.getElementById('current');
+      const english = document.getElementById('english');
+      const polish = document.getElementById('polish');
+      let words = tabOfWords;
+      const numberOfWords = <%= count_words%>;
+      let currentWord = 1;
+      english.innerText = words[currentWord-1].en;
+      polish.innerText = words[currentWord-1].pl;
+      progressBar.style.width = (100 / numberOfWords * currentWord) + '%';
+      progressBar.innerText = currentWord;
+      currentText.innerText = currentWord;
+  
+      prevBtn.addEventListener('click', ()=> {
+            
+            if(currentWord > 1 ){
+                currentWord--;
+                english.innerText = words[currentWord-1].en;
+                polish.innerText = words[currentWord-1].pl;
+                progressBar.style.width = (100 / numberOfWords * currentWord) + '%';
+                progressBar.innerText = currentWord;
+                currentText.innerText = currentWord;
+            }
+        });
+        
+        nextBtn.addEventListener('click', ()=> {
+            
+            if(currentWord < numberOfWords){
+                currentWord++;
+                english.innerText = words[currentWord-1].en;
+                polish.innerText = words[currentWord-1].pl;
+                progressBar.style.width = (100 / numberOfWords * currentWord) + '%';
+                progressBar.innerText = currentWord;
+                currentText.innerText = currentWord;     
+            }                
+        });
+  
+        
+  
+        hover(playBtnEn);
+        hover(playBtnPl);
+      
+    }
+    
+  
+    (function(){
+      
+      setProgressBar(); 
+       
+  
+    }())
+  
+   
+  </script>

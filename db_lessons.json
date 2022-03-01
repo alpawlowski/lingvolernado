@@ -1,0 +1,331 @@
+/* 1 */
+{
+    "_id" : ObjectId("61b37c8fbc55ebcc3f4a8ed4"),
+    "slug" : "zaimki-osobowe",
+    "name" : "Zaimki osobowe",
+    "img_url" : "pexels-min-an-853168.jpg",
+    "level" : 1,
+    "language" : "en",
+    "wordlist" : [ 
+        {
+            "name" : "I",
+            "name_en" : "I",
+            "name_pl" : "ja",
+            "_id" : ObjectId("61acf70f3b8194505326cf0d")
+        }, 
+        {
+            "name" : "You",
+            "name_en" : "you",
+            "name_pl" : "ty",
+            "_id" : ObjectId("61acf70f3b8194505326cf0e")
+        }, 
+        {
+            "name" : "He",
+            "name_en" : "he",
+            "name_pl" : "on",
+            "_id" : ObjectId("61acf70f3b8194505326cf0f")
+        }, 
+        {
+            "name" : "She",
+            "name_en" : "she",
+            "name_pl" : "ona",
+            "_id" : ObjectId("61acf70f3b8194505326cf10")
+        }, 
+        {
+            "name" : "It",
+            "name_en" : "it",
+            "name_pl" : "ono",
+            "_id" : ObjectId("61acf70f3b8194505326cf11")
+        }, 
+        {
+            "name" : "We",
+            "name_en" : "we",
+            "name_pl" : "my",
+            "_id" : ObjectId("61acf70f3b8194505326cf12")
+        }, 
+        {
+            "name" : "You",
+            "name_en" : "you",
+            "name_pl" : "wy",
+            "_id" : ObjectId("61acf70f3b8194505326cf13")
+        }, 
+        {
+            "name" : "They",
+            "name_en" : "they",
+            "name_pl" : "oni",
+            "_id" : ObjectId("61acf70f3b8194505326cf14")
+        }
+    ],
+    "__v" : 0
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("61b37c92bc55ebcc3f4a8eeb"),
+    "slug" : "kolory",
+    "name" : "Kolory",
+    "img_url" : "pexels-sharon-mccutcheon-4219312.jpg",
+    "level" : 2,
+    "language" : "en",
+    "wordlist" : [ 
+        {
+            "name" : "Black",
+            "name_en" : "black",
+            "name_pl" : "czarny",
+            "_id" : ObjectId("61ad456b54ab0776363101a6")
+        }, 
+        {
+            "name" : "Grey",
+            "name_en" : "grey",
+            "name_pl" : "szary",
+            "_id" : ObjectId("61ad456b54ab0776363101a7")
+        }, 
+        {
+            "name" : "White",
+            "name_en" : "white",
+            "name_pl" : "biały",
+            "name_pl_bez" : "bialy",
+            "_id" : ObjectId("61ad456b54ab0776363101a8")
+        }, 
+        {
+            "name" : "Yellow",
+            "name_en" : "yellow",
+            "name_pl" : "żółty",
+            "name_pl_bez" : "zolty",
+            "_id" : ObjectId("61ad456b54ab0776363101a9")
+        }, 
+        {
+            "name" : "Orange",
+            "name_en" : "orange",
+            "name_pl" : "pomarańczowy",
+            "name_pl_bez" : "pomaranczowy",
+            "_id" : ObjectId("61ad456b54ab0776363101aa")
+        }, 
+        {
+            "name" : "green",
+            "name_en" : "green",
+            "name_pl" : "zielony",
+            "_id" : ObjectId("61ad456b54ab0776363101ab")
+        }, 
+        {
+            "name" : "brown",
+            "name_en" : "brown",
+            "name_pl" : "brązowy",
+            "name_pl_bez" : "brazowy",
+            "_id" : ObjectId("61ad456b54ab0776363101ac")
+        }, 
+        {
+            "name" : "Pink",
+            "name_en" : "pink",
+            "name_pl" : "różowy",
+            "name_pl_bez" : "rozowy",
+            "_id" : ObjectId("61ad456b54ab0776363101ad")
+        }, 
+        {
+            "name" : "Red",
+            "name_en" : "red",
+            "name_pl" : "czerwony",
+            "_id" : ObjectId("61ad456b54ab0776363101ae")
+        }, 
+        {
+            "name" : "Golden",
+            "name_en" : "golden",
+            "name_pl" : "złoty",
+            "name_pl_bez" : "zloty",
+            "_id" : ObjectId("61ad456b54ab0776363101af")
+        }, 
+        {
+            "name" : "Violet",
+            "name_en" : "violet",
+            "name_pl" : "fioletowy",
+            "_id" : ObjectId("61ad456b54ab0776363101b0")
+        }, 
+        {
+            "name" : "Blue",
+            "name_en" : "blue",
+            "name_pl" : "niebieski",
+            "_id" : ObjectId("61ad456b54ab0776363101b1")
+        }, 
+        {
+            "name" : "Silver",
+            "name_en" : "silver",
+            "name_pl" : "srebrny",
+            "_id" : ObjectId("61ad456b54ab0776363101b2")
+        }
+    ],
+    "__v" : 0
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("61b37c93bc55ebcc3f4a8f02"),
+    "slug" : "owoce",
+    "name" : "Owoce",
+    "img_url" : "pexels-trang-doan-1132047.jpg",
+    "level" : 3,
+    "language" : "en",
+    "wordlist" : [ 
+        {
+            "name" : "Apple",
+            "name_en" : "apple",
+            "name_pl" : "jabłko",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f03")
+        }, 
+        {
+            "name" : "Cherry",
+            "name_en" : "cherry",
+            "name_pl" : "wiśnia",
+            "name_pl_bez" : "wisnia",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f04")
+        }, 
+        {
+            "name" : "Pear",
+            "name_en" : "pear",
+            "name_pl" : "gruszka",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f05")
+        }, 
+        {
+            "name" : "Pineapple",
+            "name_en" : "pineapple",
+            "name_pl" : "ananas",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f06")
+        }, 
+        {
+            "name" : "Strawberry",
+            "name_en" : "strawberry",
+            "name_pl" : "truskawka",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f07")
+        }, 
+        {
+            "name" : "Grapes",
+            "name_en" : "grapes",
+            "name_pl" : "winogrona",
+            "name_pl_bez" : "winogron",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f08")
+        }, 
+        {
+            "name" : "Orange",
+            "name_en" : "orange",
+            "name_pl" : "pomarańcza",
+            "name_pl_bez" : "pomarancza",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f09")
+        }, 
+        {
+            "name" : "Coconut",
+            "name_en" : "coconut",
+            "name_pl" : "kokos",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f0a")
+        }, 
+        {
+            "name" : "Watermelon",
+            "name_en" : "watermelon",
+            "name_pl" : "arbuz",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f0b")
+        }, 
+        {
+            "name" : "Peach",
+            "name_en" : "peach",
+            "name_pl" : "brzoskwinia",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f0c")
+        }, 
+        {
+            "name" : "Currant",
+            "name_en" : "currant",
+            "name_pl" : "porzeczka",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f0d")
+        }, 
+        {
+            "name" : "Plum",
+            "name_en" : "plum",
+            "name_pl" : "śliwka",
+            "name_pl_bez" : "sliwka",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f0e")
+        }, 
+        {
+            "name" : "Gooseberry",
+            "name_en" : "gooseberry",
+            "name_pl" : "agrest",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f0f")
+        }, 
+        {
+            "name" : "Berry",
+            "name_en" : "berry",
+            "name_pl" : "jagoda",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f10")
+        }, 
+        {
+            "name" : "Banana",
+            "name_en" : "banana",
+            "name_pl" : "banan",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f11")
+        }, 
+        {
+            "name" : "Wild strawberry",
+            "name_en" : "wild strawberry",
+            "name_pl" : "poziomka",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f12")
+        }, 
+        {
+            "name" : "Raspberry",
+            "name_en" : "raspberry",
+            "name_pl" : "malina",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f13")
+        }, 
+        {
+            "name" : "Lemon",
+            "name_en" : "lemon",
+            "name_pl" : "cytryna",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f14")
+        }, 
+        {
+            "name" : "Lime",
+            "name_en" : "lime",
+            "name_pl" : "limonka",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f15")
+        }, 
+        {
+            "name" : "Grapefruit",
+            "name_en" : "grapefruit",
+            "name_pl" : "grejpfrut",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f16")
+        }, 
+        {
+            "name" : "Fruits",
+            "name_en" : "fruits",
+            "name_pl" : "owoce",
+            "_id" : ObjectId("61b37c93bc55ebcc3f4a8f17")
+        }
+    ],
+    "__v" : 0
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("61b4c730cb7cec9fc9edb820"),
+    "slug" : "test",
+    "name" : "Test",
+    "img_url" : "pexels-trang-doan-1132047.jpg",
+    "level" : 3,
+    "language" : "en",
+    "wordlist" : [ 
+        {
+            "name" : "Coconut",
+            "name_en" : "coconut",
+            "name_pl" : "kokos",
+            "_id" : ObjectId("61b4c730cb7cec9fc9edb828")
+        }, 
+        {
+            "name" : "Banana",
+            "name_en" : "banana",
+            "name_pl" : "banan",
+            "_id" : ObjectId("61b4c730cb7cec9fc9edb82f")
+        }, 
+        {
+            "name" : "Fruits",
+            "name_en" : "fruits",
+            "name_pl" : "owoce",
+            "_id" : ObjectId("61b4c730cb7cec9fc9edb835")
+        }
+    ],
+    "__v" : 0
+}
