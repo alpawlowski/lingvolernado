@@ -190,12 +190,15 @@ class AuthController {
             : res.redirect('/zaloguj');
         }
       }
-
+    
       logout(req, res) {
-        req.session.destroy();
-        res.redirect('/');
+        if (req.session) {
+            req.session = null;
+            res.redirect('/');
+        } else {
+            res.redirect('/zaloguj');
+        }
       }
-
 
 }
 
