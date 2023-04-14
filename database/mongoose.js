@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 const { database } = require('../config.js');
 
-
-try {
-  mongoose.connect(database);
-  console.log('Database is connected...')
-
-} catch (error) {
-  console.log(error)
+const connectDB = async () => {
+  try {
+      mongoose.set('strictQuery', false);
+      await mongoose.connect(database, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+      });
+      console.log('Database is connected...');
+  } catch (error) {
+      console.error(error.message);
+  }
 }
