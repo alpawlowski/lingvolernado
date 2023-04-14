@@ -1,10 +1,10 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-const { database } = require('../config.js');
 
-const connectDB = async () => {
+const connectToDatabase = async () => {
   try {
       mongoose.set('strictQuery', false);
-      await mongoose.connect(database, {
+      await mongoose.connect(process.env.DATABASE, {
           useNewUrlParser: true,
           useUnifiedTopology: true,
       });
@@ -13,3 +13,4 @@ const connectDB = async () => {
       console.error(error.message);
   }
 }
+connectToDatabase();
