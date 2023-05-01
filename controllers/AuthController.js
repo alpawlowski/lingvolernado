@@ -61,7 +61,7 @@ class AuthController {
             <h2>Witamy w aplikacji LingvoLernado! 👋</h2>
             <h4>Twój adres e-mail: ${req.body.email}</h4>
             <p>Kliknij poniższy przycisk, aby aktywować swoje konto w LingvoLernado.</p>
-            <a href="http://localhost:${port}/activate/${id}">
+            <a href="https://lingvolernado.onrender.com/activate/${id}">
             <button>Aktywuj konto</button>
             </a>
           </div>
