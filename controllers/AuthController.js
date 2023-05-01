@@ -80,7 +80,7 @@ class AuthController {
     
         const mailOptions = {
           // from: req.body.email, // sender address
-          from: 'lingvolernado@email.com', // sender address
+          from: '"LingvoLernado" <lingvolernado@email.com>', // sender address
           to: req.body.email, // list of receivers
           subject: "Witamy w LingvoLernado 🥰", // Subject line
           // text: req.body.message, // plain text body
